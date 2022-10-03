@@ -8,9 +8,10 @@ module BigIdiot
     using Random: rand, randn, randperm, seed!, shuffle
     using Statistics: cor, cov, mean, median, std, var
 
+    include("hair.jl")
     include("suitor_check.jl")
 
     export
-    suitor_check
+    set_hair,set_cuts,suitor_check
 
 end # module BigIdiot
