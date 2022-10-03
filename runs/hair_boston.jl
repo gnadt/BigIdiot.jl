@@ -14,6 +14,7 @@ begin
 	using BenchmarkTools, LinearAlgebra, Plots
 	using CSV
 	using DelimitedFiles: readdlm, writedlm
+	using LsqFit: coef, curve_fit
 	using Plots: plot, plot!
 	using Random: rand, randn, randperm, seed!, shuffle
 	using Statistics: cor, cov, mean, median, std, var
