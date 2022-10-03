@@ -18,6 +18,6 @@ module BigIdiot
     set_hair,set_cuts,
     image2kmz,
     suitor_check,
-    linreg
+    linreg,fogm
 
 end # module BigIdiot
