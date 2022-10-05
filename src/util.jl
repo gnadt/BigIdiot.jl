@@ -46,3 +46,23 @@ function fogm(sigma, tau, dt, N)
 
     return (x)
 end # function fogm
+
+"""
+    integral_love(hh, end_love = size(hh,1))
+
+Love integral function.
+
+**Arguments:**
+- `hh`:       Nx2 matrix with time [years] and intensity [❤] columns
+- `end_love`: last index of `hh` to consider
+
+**Returns:**
+- `total_love`: happiness units
+"""
+function integral_love(hh, end_love = size(hh,1))
+    total_love = 0
+    for i in eachindex(hh[1:end_love-1,1])
+        total_love += (hh[i+1,1] - hh[i,1]) * (hh[i+1,2] + hh[i,2])/2
+    end
+    return round(Int,total_love)
+end # function integral_love
