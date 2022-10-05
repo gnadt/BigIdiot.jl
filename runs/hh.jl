@@ -28,6 +28,7 @@ coef_c = coef(fit_c)
 coef_p = coef(fit_p)
 
 ## model with fit
+seed!(2)
 dt        = 0.1
 tt_max    = 60
 tt        = 0:dt:tt_max
@@ -53,8 +54,13 @@ plot!(p2,hh2p[:,1],hh2p[:,2],lab="passionate")
 plot!(p2,hh3c[:,1],hh3c[:,2],lab="companionate fit")
 plot!(p2,hh3p[:,1],hh3p[:,2],lab="passionate fit")
 
-## create 
-hh3 = []
+## create case study
+seed!(2)
+hh4p = [tt tt] / 60 / 3
+hh5p = [tt tt] / 60 / 3
+hh4p[:,2] = model_p(hh4p[:,1],coef_p) .+ fogm(2.5,2,dt/60/3,length(tt)) .+ 10
+hh5p[:,2] = model_p(hh5p[:,1],coef_p) .+ fogm(125,10,dt/60/3,length(tt)) .+ 10
 
-p3 = plot(xlab="time [months]",ylab="intensity [❤]")
-plot!(p3,hh3[:,1],hh3[:,2],lab="")
+p3 = plot(xlab="time [months]",ylab="intensity [❤]",legend=:topleft)
+plot!(p3,hh4p[:,1]*12,hh4p[:,2],lab="predicted")
+plot!(p3,hh5p[:,1]*12,hh5p[:,2],lab="observed")
